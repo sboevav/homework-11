@@ -69,7 +69,8 @@ scrape_configs:
   - job_name: 'node-prometheus'
 
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['192.168.1.13:9100']
+#      - targets: ['localhost:9100']
 EOF
 
 # start prometheus
