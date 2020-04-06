@@ -2,7 +2,7 @@
 
 ## Установка node exporter
 
-1. Скачивание  
+1. Настроим мониторинг хостовой системы. на базе prometheus - grafana. Первым делом настроим на хосте node_exporter для поставки метрик мониторинга. Скачивание  
 	```
 	user@linux1:~$ wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
 	--2020-04-05 16:42:02--  https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
