@@ -2,7 +2,7 @@
 
 ## Установка node exporter
 
-1. Настроим мониторинг хостовой системы. на базе prometheus - grafana. Первым делом настроим на хосте node_exporter для поставки метрик мониторинга. Скачивание  
+1. Настроим мониторинг хостовой системы на базе prometheus - grafana. Первым делом настроим на хосте node_exporter для поставки метрик мониторинга. Скачивание  
 	```
 	user@linux1:~$ wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
 	--2020-04-05 16:42:02--  https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
@@ -64,7 +64,7 @@
 	   CGroup: /system.slice/node_exporter.service
 		   └─18036 /usr/local/bin/node_exporter
 	```
-5. Можем проверить получение метрик по адресу http://localhost:9100/metrics  
+5. Проверяем получение метрик по адресу http://localhost:9100/metrics  
 	```
 	user@linux1:~/node_exporter-0.18.1.linux-amd64$ curl -s http://localhost:9100/metrics
 	# HELP go_gc_duration_seconds A summary of the GC invocation durations.
@@ -83,7 +83,7 @@
 	```
 ## Развертывание стенда prometheus и grafana
 
-6. Теперь развернем предложенный на занятии стенд с установленным prometheus и grafana, только изменим целевую машину с гостевой на реальный хост в файле конфигурации prometheus.yml: - targets:['192.168.1.13:9100']. После развертывания убедимся, что по адресу http://localhost:9090 доступен Prometheus, а по адресу http://localhost:3000 - Grafana. На на странице http://localhost:9090/targets появился первый таргет. Он находится в состоянии “UP”.  
+6. Теперь развернем предложенный на занятии стенд с установленным prometheus и grafana, только изменим целевую машину с гостевой на реальный хост в файле конфигурации prometheus.yml: - targets:['192.168.1.13:9100']. После развертывания убедимся, что по адресу http://localhost:9090 доступен Prometheus, а по адресу http://localhost:3000 - Grafana. На странице http://localhost:9090/targets появился первый таргет. Он находится в состоянии “UP”.  
 ![Иллюстрация-1 к описанию ДЗ](screenshots/Screenshot-1.png "Доступ к метрикам хоста")
 
 7. Далее настроим интерфейс Grafana по адресу http://localhost:3000. Логинимся (admin:admin). Нажимаем на боковой панели Configuration (шестерёнка) → Data Sources и  добавляем наш Prometheus. В настройках URL прописываем ссылку полностью 'http://localhost:9090' (без 'http://' не хочет принимать адрес)  
@@ -91,5 +91,5 @@
 8. Теперь добавим готовый дашборд Node exporter full. Для этого нажимаем в панели слева пиктограмму квадрата (Dashboards) → Manage → Import. Вписываем 1860 в поле 'Grafana.com Dashboard' и убираем курсор из поля ввода, иначе не начнёт импортировать. Дальше указываем data source и жмём import.  
 
 9. Изменяем заголовок дашборда в настройках Dashboard settings и выбираем/настраиваем нужные нам графики.  
-![Иллюстрация-2 к описанию ДЗ](screenshots/Screenshot-1.png "Графики с заголовком дашборда")
+![Иллюстрация-2 к описанию ДЗ](screenshots/Screenshot-2.png "Графики с заголовком дашборда")
 
